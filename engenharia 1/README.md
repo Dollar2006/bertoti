@@ -1,3 +1,5 @@
+
+# Primeiro Texto
 What precisely do we mean by software engineering? What distinguishes “software engineering” from “programming” or “computer science”? And why would Google have a unique perspective to add to the corpus of previous 
 software engineering literature written over the past 50 years?
  
@@ -12,6 +14,7 @@ Unlike those more established engineering professions, current software engineer
 their calculations can cause real damage; programming, on the whole, has traditionally not followed such rigorous practices. But, as software becomes more integrated into our lives, we must adopt and rely on more 
 rigorous engineering methods. We hope this book helps others see a path toward more reliable software practices.
 
+# Segundo Texto
 Programming Over Time
 We propose that “software engineering” encompasses not just the act of writing code, but all of the tools and processes an organization uses to build and maintain that code over time. What practices can a software 
 organization introduce that will best keep its code valuable over the long term? How can engineers make a codebase more sustainable and the software engineering discipline itself more rigorous? We don’t have 
@@ -31,10 +34,11 @@ How an organization will need to adapt as it evolves
 Trade-offs and Costs
 How an organization makes decisions, based on the lessons of Time and Change and Scale and Growth
 
-# Primeiro texto
+# Resumo Primeiro texto
 -Primeiro Paragrafo: O autor começa com alguns questionamentos sobre oq é significa Eng software, o que distingue ela de programação e ciencia da computação, porque a google teria uma perspectiva unica para adicionar o seu texto algo que foi escrito por 50 anos sobre eng software.
 -Segundo Paragrafo: Indica que a engenharia de software diferente da programação, ela é mais séria e teórica, atuando em situações reais, já a programação você só programa.
 -Terceiro Paragrafo: Diferente de outras engenharias que demandam mais seriedade e rigor em seus calculos( por serem atividades de risco), a engenharia de software é algo mais "tranquilo" pois não demanda o mesmo 
 rigor, mas quanto mais essas atividades estão ligadas ao nosso dia-dia, mais elas são necessárias
 
-# Segundo Texto
+# Resumo Segundo Texto
+
