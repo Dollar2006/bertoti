@@ -41,4 +41,17 @@ How an organization makes decisions, based on the lessons of Time and Change and
 rigor, mas quanto mais essas atividades estão ligadas ao nosso dia-dia, mais elas são necessárias
 
 # Resumo Segundo Texto
+-Primeiro Paragrafo: A engenharia de software não se define apenas como "Escrever código", mas sim a manutenção e as ferrramentas para manter o código funcionando como 
+posso manter o software bom e sustentavel por um longo tempo?
+Os três paramêtros principais: 
+    Tempo e troca: Adaptabilidade do código de acordo com o tempo
+    Escalabilidade: O quanto o escopo do projeto terá que ser alterado com o tempo
+    Trade-offs(Compensação): Quanto ou oque terei que perder para ganhar em algo
+
+
+# Citação dos três trade-offs
+-Pacote Office(Intuitivo) vs LibreOffice(Personalização)
+-Usar ou não WordPress: O produto tem uma escalabilidade boa, porem quanto mais plugins e recursos você usa mais complexo seu produto fica.
+
+
 
