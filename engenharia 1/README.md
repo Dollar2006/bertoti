@@ -50,8 +50,21 @@ Os três paramêtros principais:
 
 
 # Citação dos três trade-offs
--Pacote Office(Intuitivo) vs LibreOffice(Personalização)
--Usar ou não WordPress: O produto tem uma escalabilidade boa, porem quanto mais plugins e recursos você usa mais complexo seu produto fica.
+Performance vs. Complexidade:
+
+Performance: Um sistema rápido e eficiente é desejável, mas pode exigir código complexo e difícil de manter.
+Complexidade: Um código simples e fácil de entender pode ser mais lento e menos eficiente.
+Exemplo: Um sistema de recomendação pode usar algoritmos complexos para fornecer resultados precisos, mas isso pode tornar o sistema lento e difícil de escalar. Um sistema mais simples pode ser mais rápido, mas pode não ser tão preciso.
+Segurança vs. Usabilidade:
+
+Segurança: Proteger dados e sistemas contra acesso não autorizado é crucial, mas pode tornar o sistema mais complicado de usar.
+Usabilidade: Um sistema fácil de usar e intuitivo pode ser mais vulnerável a ataques.
+Exemplo: Um sistema de autenticação com várias etapas de verificação pode ser mais seguro, mas pode ser frustrante para os usuários. Um sistema de autenticação mais simples pode ser mais fácil de usar, mas pode ser mais vulnerável a ataques.
+Custo vs. Tempo de entrega:
+
+Custo: Um sistema com mais recursos e funcionalidades pode ser mais caro para desenvolver.
+Tempo de entrega: Um sistema com menos recursos pode ser desenvolvido mais rapidamente e lançado no mercado mais cedo.
+Exemplo: Uma aplicação com um conjunto completo de funcionalidades pode levar mais tempo e dinheiro para desenvolver. Uma aplicação com funcionalidades básicas pode ser lançada mais rapidamente, mas pode não atender às necessidades dos usuários.
 
 
 
