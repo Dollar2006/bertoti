@@ -67,4 +67,4 @@ Tempo de entrega: Um sistema com menos recursos pode ser desenvolvido mais rapid
 Exemplo: Uma aplicação com um conjunto completo de funcionalidades pode levar mais tempo e dinheiro para desenvolver. Uma aplicação com funcionalidades básicas pode ser lançada mais rapidamente, mas pode não atender às necessidades dos usuários.
 
 
-
+Se tivermos uma pessoa, que precisa de um veiculo para chegar até determinado local, a primeira vista o primeiro veiculo que nos vem em mente é um carro, mas e se aquela pessoa não anda grandes distancias o suficiente para precisar de um carro, aquele problema pode ser resolvido com uma bicicleta, skate, patinete, etc. Mas e se a pessoa não ter carteira de motorista? Ela não pode dirigir o carro. Ela está andando em qual terreno? Na água? Se for na água um barco/navio é a melhor opção
