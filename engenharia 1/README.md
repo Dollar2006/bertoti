@@ -77,5 +77,348 @@ Se tivermos uma pessoa, que precisa de um veiculo para chegar até determinado l
 
 Em resumo o slide 57 se dá o conceito de desenvolver algo que resolva o problema do usuário desde o inicio de seu desenvolvimento, representado pelo skate evoluindo gradativamente até se tornar um carro, essa metafora é utilizada no ambiente de Desenvolvimento de software, pois com ele entendemos que temos que entregar um sistema funcional para o usuário que resolva o problema dele desde o inicio mesmo que de maneira simples e primitiva. Em contraponto temos a imagem de cima com uma roda evoluindo para um carro, essa situação representa muitas equipes que desenvolvem um projeto pensando em ir adicionando parte por parte durante o projeto o que está errado, porque pense na seguinte situação: Você está com fome e precisa se alimentar e tem os ingredientes para fazer a comida, mas ao invés de ter o fogão ou algum meio para fazer a comida você só tem uma peça do produto e não consegue montar o resto do produto porque a empresa que te vendeu falou que ia entregar o produto peça por peça, resolveu seu problema? Acho que não preciso responder.
 
-# Atividade 05 - Código teste Personagem RPG
+# Atividade 05 - Código teste Casa de Aposta
+# Sistema de Casa de Apostas
+
+Sistema simples de casa de apostas futebolísticas desenvolvido em Java.
+
+## Estrutura do Projeto
+
+### Classe Partida
+```java
+package estacionamento;
+
+public class Partida {
+    private String timeCasa;
+    private String timeVisitante;
+    private double oddVitoriaCasa;
+    private double oddEmpate;
+    private double oddVitoriaVisitante;
+    private String resultado; // "CASA", "EMPATE", "VISITANTE" ou null se não finalizado
+
+    public Partida(String timeCasa, String timeVisitante, double oddVitoriaCasa, double oddEmpate, double oddVitoriaVisitante) {
+        this.timeCasa = timeCasa;
+        this.timeVisitante = timeVisitante;
+        this.oddVitoriaCasa = oddVitoriaCasa;
+        this.oddEmpate = oddEmpate;
+        this.oddVitoriaVisitante = oddVitoriaVisitante;
+        this.resultado = null;
+    }
+
+    // Getters e Setters
+    public String getTimeCasa() {
+        return timeCasa;
+    }
+
+    public void setTimeCasa(String timeCasa) {
+        this.timeCasa = timeCasa;
+    }
+
+    public String getTimeVisitante() {
+        return timeVisitante;
+    }
+
+    public void setTimeVisitante(String timeVisitante) {
+        this.timeVisitante = timeVisitante;
+    }
+
+    public double getOddVitoriaCasa() {
+        return oddVitoriaCasa;
+    }
+
+    public void setOddVitoriaCasa(double oddVitoriaCasa) {
+        this.oddVitoriaCasa = oddVitoriaCasa;
+    }
+
+    public double getOddEmpate() {
+        return oddEmpate;
+    }
+
+    public void setOddEmpate(double oddEmpate) {
+        this.oddEmpate = oddEmpate;
+    }
+
+    public double getOddVitoriaVisitante() {
+        return oddVitoriaVisitante;
+    }
+
+    public void setOddVitoriaVisitante(double oddVitoriaVisitante) {
+        this.oddVitoriaVisitante = oddVitoriaVisitante;
+    }
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
+    }
+}
+```
+
+### Classe CasaDeApostas
+```java
+package estacionamento;
+
+import java.util.List;
+import java.util.LinkedList;
+
+public class CasaDeApostas {
+    private List<Partida> partidas = new LinkedList<Partida>();
+    private double saldoCaixa = 0.0;
+
+    public void adicionarPartida(Partida partida) {
+        partidas.add(partida);
+    }
+
+    public Partida buscarPartidaPorTimes(String timeCasa, String timeVisitante) {
+        for(Partida partida : partidas) {
+            if(partida.getTimeCasa().equals(timeCasa) && 
+               partida.getTimeVisitante().equals(timeVisitante)) {
+                return partida;
+            }
+        }
+        return null;
+    }
+
+    public List<Partida> buscarPartidasPorTime(String time) {
+        List<Partida> encontradas = new LinkedList<Partida>();
+        for(Partida partida : partidas) {
+            if(partida.getTimeCasa().equals(time) || 
+               partida.getTimeVisitante().equals(time)) {
+                encontradas.add(partida);
+            }
+        }
+        return encontradas;
+    }
+
+    public void registrarAposta(double valor, Partida partida, String resultado) {
+        if (partida.getResultado() != null) {
+            throw new IllegalStateException("Não é possível apostar em uma partida já finalizada");
+        }
+        saldoCaixa += valor;
+    }
+
+    public void finalizarPartida(Partida partida, String resultado) {
+        partida.setResultado(resultado);
+    }
+
+    public List<Partida> getPartidas() {
+        return partidas;
+    }
+
+    public double getSaldoCaixa() {
+        return saldoCaixa;
+    }
+}
+```
+
+### Classe Main
+```java
+package estacionamento;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        CasaDeApostas casa = new CasaDeApostas();
+        Scanner scanner = new Scanner(System.in);
+        
+        while (true) {
+            System.out.println("\n=== CASA DE APOSTAS ===");
+            System.out.println("1. Adicionar nova partida");
+            System.out.println("2. Listar todas as partidas");
+            System.out.println("3. Buscar partida por times");
+            System.out.println("4. Registrar aposta");
+            System.out.println("5. Finalizar partida");
+            System.out.println("6. Ver saldo do caixa");
+            System.out.println("0. Sair");
+            System.out.print("Escolha uma opção: ");
+            
+            int opcao = scanner.nextInt();
+            scanner.nextLine(); // Limpar o buffer
+            
+            switch (opcao) {
+                case 1:
+                    System.out.print("Time da casa: ");
+                    String timeCasa = scanner.nextLine();
+                    System.out.print("Time visitante: ");
+                    String timeVisitante = scanner.nextLine();
+                    System.out.print("Odd vitória casa: ");
+                    double oddCasa = scanner.nextDouble();
+                    System.out.print("Odd empate: ");
+                    double oddEmpate = scanner.nextDouble();
+                    System.out.print("Odd vitória visitante: ");
+                    double oddVisitante = scanner.nextDouble();
+                    
+                    Partida novaPartida = new Partida(timeCasa, timeVisitante, oddCasa, oddEmpate, oddVisitante);
+                    casa.adicionarPartida(novaPartida);
+                    System.out.println("Partida adicionada com sucesso!");
+                    break;
+                    
+                case 2:
+                    List<Partida> partidas = casa.getPartidas();
+                    if (partidas.isEmpty()) {
+                        System.out.println("Não há partidas cadastradas.");
+                    } else {
+                        System.out.println("\nPartidas cadastradas:");
+                        for (Partida p : partidas) {
+                            System.out.printf("%s vs %s (Odds: %.2f/%.2f/%.2f) - Resultado: %s%n",
+                                p.getTimeCasa(), p.getTimeVisitante(),
+                                p.getOddVitoriaCasa(), p.getOddEmpate(), p.getOddVitoriaVisitante(),
+                                p.getResultado() != null ? p.getResultado() : "Não finalizado");
+                        }
+                    }
+                    break;
+                    
+                case 3:
+                    System.out.print("Time da casa: ");
+                    String buscaCasa = scanner.nextLine();
+                    System.out.print("Time visitante: ");
+                    String buscaVisitante = scanner.nextLine();
+                    
+                    Partida encontrada = casa.buscarPartidaPorTimes(buscaCasa, buscaVisitante);
+                    if (encontrada != null) {
+                        System.out.printf("Partida encontrada: %s vs %s (Odds: %.2f/%.2f/%.2f)%n",
+                            encontrada.getTimeCasa(), encontrada.getTimeVisitante(),
+                            encontrada.getOddVitoriaCasa(), encontrada.getOddEmpate(),
+                            encontrada.getOddVitoriaVisitante());
+                    } else {
+                        System.out.println("Partida não encontrada.");
+                    }
+                    break;
+                    
+                case 4:
+                    System.out.print("Time da casa: ");
+                    String apostaCasa = scanner.nextLine();
+                    System.out.print("Time visitante: ");
+                    String apostaVisitante = scanner.nextLine();
+                    System.out.print("Valor da aposta: R$ ");
+                    double valor = scanner.nextDouble();
+                    scanner.nextLine(); // Limpar o buffer
+                    System.out.print("Resultado apostado (CASA/EMPATE/VISITANTE): ");
+                    String resultadoAposta = scanner.nextLine();
+                    
+                    Partida partidaAposta = casa.buscarPartidaPorTimes(apostaCasa, apostaVisitante);
+                    if (partidaAposta != null) {
+                        try {
+                            casa.registrarAposta(valor, partidaAposta, resultadoAposta);
+                            System.out.println("Aposta registrada com sucesso!");
+                        } catch (IllegalStateException e) {
+                            System.out.println("Erro: " + e.getMessage());
+                        }
+                    } else {
+                        System.out.println("Partida não encontrada.");
+                    }
+                    break;
+                    
+                case 5:
+                    System.out.print("Time da casa: ");
+                    String finalCasa = scanner.nextLine();
+                    System.out.print("Time visitante: ");
+                    String finalVisitante = scanner.nextLine();
+                    System.out.print("Resultado final (CASA/EMPATE/VISITANTE): ");
+                    String resultadoFinal = scanner.nextLine();
+                    
+                    Partida partidaFinal = casa.buscarPartidaPorTimes(finalCasa, finalVisitante);
+                    if (partidaFinal != null) {
+                        casa.finalizarPartida(partidaFinal, resultadoFinal);
+                        System.out.println("Partida finalizada com sucesso!");
+                    } else {
+                        System.out.println("Partida não encontrada.");
+                    }
+                    break;
+                    
+                case 6:
+                    System.out.printf("Saldo atual do caixa: R$ %.2f%n", casa.getSaldoCaixa());
+                    break;
+                    
+                case 0:
+                    System.out.println("Saindo do sistema...");
+                    scanner.close();
+                    return;
+                    
+                default:
+                    System.out.println("Opção inválida!");
+            }
+        }
+    }
+}
+```
+
+### Classe Teste
+```java
+package estacionamento;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import java.util.List;
+
+class Teste {
+    @Test
+    void testAdicionarPartida() {
+        CasaDeApostas casa = new CasaDeApostas();
+        Partida partida = new Partida("Flamengo", "Vasco", 1.5, 3.2, 4.0);
+        
+        casa.adicionarPartida(partida);
+        assertEquals(1, casa.getPartidas().size());
+    }
+
+    @Test
+    void testBuscarPartida() {
+        CasaDeApostas casa = new CasaDeApostas();
+        Partida partida = new Partida("Flamengo", "Vasco", 1.5, 3.2, 4.0);
+        casa.adicionarPartida(partida);
+        
+        Partida encontrada = casa.buscarPartidaPorTimes("Flamengo", "Vasco");
+        assertNotNull(encontrada);
+        assertEquals("Flamengo", encontrada.getTimeCasa());
+        assertEquals("Vasco", encontrada.getTimeVisitante());
+    }
+
+    @Test
+    void testRegistrarAposta() {
+        CasaDeApostas casa = new CasaDeApostas();
+        Partida partida = new Partida("Flamengo", "Vasco", 1.5, 3.2, 4.0);
+        casa.adicionarPartida(partida);
+        
+        casa.registrarAposta(100.0, partida, "CASA");
+        assertEquals(100.0, casa.getSaldoCaixa());
+    }
+
+    @Test
+    void testApostaPartidaFinalizada() {
+        CasaDeApostas casa = new CasaDeApostas();
+        Partida partida = new Partida("Flamengo", "Vasco", 1.5, 3.2, 4.0);
+        casa.adicionarPartida(partida);
+        
+        casa.finalizarPartida(partida, "CASA");
+        
+        assertThrows(IllegalStateException.class, () -> {
+            casa.registrarAposta(100.0, partida, "CASA");
+        });
+    }
+
+    @Test
+    void testBuscarPartidasPorTime() {
+        CasaDeApostas casa = new CasaDeApostas();
+        casa.adicionarPartida(new Partida("Flamengo", "Vasco", 1.5, 3.2, 4.0));
+        casa.adicionarPartida(new Partida("Flamengo", "Botafogo", 1.6, 3.1, 3.9));
+        casa.adicionarPartida(new Partida("Palmeiras", "São Paulo", 1.8, 3.0, 3.5));
+        
+        List<Partida> partidasFlamengo = casa.buscarPartidasPorTime("Flamengo");
+        assertEquals(2, partidasFlamengo.size());
+    }
+
+    @Test
+    void testFinalizarPartida() {
+        CasaDeApostas casa = new CasaDeApostas();
+        Partida partida = new Partida("Flamengo", "Vasco", 1.5, 3.2, 4.0);
+        casa.adicionarPartida(partida);
+        
+        casa.finalizarPartida(partida, "CASA");
+        assertEquals("CASA", partida.getResultado());
+    }
+} 
 
