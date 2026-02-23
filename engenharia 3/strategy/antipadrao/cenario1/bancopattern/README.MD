@@ -1,0 +1,1 @@
+Os códigos estão ruins pq está repetindo muito código pelas classes atrapalhando a manuntenção.
