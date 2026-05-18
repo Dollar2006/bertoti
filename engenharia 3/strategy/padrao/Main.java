@@ -2,15 +2,15 @@ package padrao;
 
 public class Main {
     public static void main(String[] args) {
-        RPGCharacter warrior = new RPGCharacter("Aragorn", new SwordAttack());
-        warrior.performAttack();
+        VagaEmprego vaga = new VagaEmprego("Desenvolvedor Java", new TriagemPorExperiencia());
+        vaga.triarCandidatos();
 
-        System.out.println("--- Changing strategy dynamically ---");
-        warrior.setAttackStrategy(new BowAttack());
-        warrior.performAttack();
-
-        System.out.println("--- Changing strategy dynamically ---");
-        warrior.setAttackStrategy(new MagicAttack());
-        warrior.performAttack();
+        System.out.println("--- Alterando a estratégia de triagem ---");
+        vaga.setEstrategiaTriagem(new TriagemPorFormacao());
+        vaga.triarCandidatos();
+        
+        System.out.println("--- Alterando a estratégia de triagem ---");
+        vaga.setEstrategiaTriagem(new TriagemPorTestePratico());
+        vaga.triarCandidatos();
     }
 }
